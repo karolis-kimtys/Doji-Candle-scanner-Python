@@ -1,3 +1,9 @@
+"""
+This Doji Candle scanner code.
+This was to visualize a trading strategy when Doji candle appears in the market, measure RSI level and which trend market is in.
+If all conditions are met, buy or sell at market.
+"""
+
 import pandas as pd
 import talib
 import numpy as np
@@ -67,9 +73,6 @@ complete_doji_idx = list(complete_doji_idx)
 print(complete_doji_idx)
 #print(complete_doji_idx)
 
-
-
-
 # complete_doji_prices = list(complete_doji_idx.values)
 # def doji_prices_to_nan(complete_doji_prices):
 #     return[float('nan') if x == 0 else x for x in complete_doji_prices]
@@ -82,8 +85,6 @@ print(complete_doji_idx)
 # complete_doji_idx = pd.DataFrame(doji_idx_to_nan(complete_doji_idx))
 # complete_doji_idx = complete_doji_idx.dropna()
 # print(complete_doji_idx.index)
-
-
 #print(doji_idx_to_nan(complete_doji_idx))
 #complete_doji_idx = argrelmax(complete_doji.values, order=1)
 #complete_doji = close[complete_doji_idx]
@@ -144,8 +145,6 @@ df['Five_min_list'] = five_min_list
 df['Five_min_list'] = np.where(df['Five_min_list'] > 0, low, 0)
 five_min_list = df['Five_min_list']
 
-
-
 #Set up a windows size and plot OHLC
 fig, ax = plt.subplots(figsize=[15, 9])
 candlestick2_ohlc(ax, df['open'], df['high'], df['low'], df['close'], colorup='green', colordown='red', width=0.5)
@@ -153,7 +152,6 @@ candlestick2_ohlc(ax, df['open'], df['high'], df['low'], df['close'], colorup='g
 #Plot valid Doji prices on graph, x and y are same length in this data set
 #Doji_idx returns only indexes with valid doji pattern, doji return a price value
 #plt.scatter(complete_doji_idx.index, complete_doji_prices, color='b')
-
 
 def max_to_nan(five_max_list):
     return[float('nan') if x == 0 else x for x in five_max_list]
